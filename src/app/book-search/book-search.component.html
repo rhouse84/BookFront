@@ -1,3 +1,13 @@
-<p>
-  book-search works!
-</p>
+<div id="search-component">
+	<h4>Book Search</h4>
+
+	<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+	<ul class="search-result">
+		<li *ngFor="let book of books$ | async" >
+			<a routerLink="/detail/{{book._id}}">
+				{{book.title}}
+			</a>
+		</li>
+	</ul>
+</div>

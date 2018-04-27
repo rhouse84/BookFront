@@ -5,6 +5,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Book } from './book';
 import { MessageService } from './message.service';
+import { environment } from '../environments/environment';
 
 const httpOptions = {
 	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,21 +14,19 @@ const httpOptions = {
 @Injectable()
 export class BookService {
 
-	private booksUrl = 'http://localhost:3000/api/books';  // URL to web api
-
 	constructor(
 		private http: HttpClient,
 		private messageService: MessageService) {}
 
 	getBooks(): Observable<Book[]> {
-		return this.http.get<Book[]>(this.booksUrl)
+		return this.http.get<Book[]>(environment.host+environment.booksUrl)
 			.pipe(
 				catchError(this.handleError('getBooks', []))
 			);
 	}
 
 	getBook(_id: string): Observable<Book> {
-		const url = `${this.booksUrl}/${_id}`;
+		const url = `${environment.host+environment.booksUrl}/${_id}`;
 		return this.http.get<Book>(url).pipe(
 			tap(_ => this.log(`fetched book id=${_id}`)),
 			catchError(this.handleError<Book>(`getBook id=${_id}`))
@@ -35,8 +34,9 @@ export class BookService {
 	}
 
 	/** GET book by id. Return `undefined` when id not found */
+	//This was in the sample code. Don't think I'll ever use it.
 	getBookNo404<Data>(_id: string): Observable<Book> {
-	const url = `${this.booksUrl}/?id=${_id}`;
+	const url = `${environment.host+environment.booksUrl}/?id=${_id}`;
 	return this.http.get<Book[]>(url)
 		.pipe(
 			map(books => books[0]), // returns a {0|1} element array
@@ -50,11 +50,12 @@ export class BookService {
 
 	/* GET books whose title contains search term */
 	searchBooks(term: string): Observable<Book[]> {
+		const url = `${environment.host+environment.bookSearchUrl}/${term}`;
 		if (!term.trim()) {
 			//if not search term, return empty hero array.
 			return of([]);
 		}
-		return this.http.get<Book[]>(`api/bookSearch/?title=${term}`).pipe(
+		return this.http.get<Book[]>(url).pipe(
 			tap(_ => this.log(`found books matching "${term}"`)),
 			catchError(this.handleError<Book[]>('searchBooks', []))
 		);
@@ -96,7 +97,7 @@ export class BookService {
 			console.error(error); // log to console instead
 	 
 			// TODO: better job of transforming error for user consumption
-			//this.log(`${operation} failed: ${error.message}`);
+			this.log(`${operation} failed: ${error.message}`);
 	 
 			// Let the app keep running by returning an empty result.
 			return of(result as T);
