@@ -1,13 +1,24 @@
 <div *ngIf="book">
 
-	<h2>{{ book.title }} Details</h2>
-	<div><span>id: </span>{{book._id}}</div>
-	<div>
+	<h2>Book Details</h2>
+	<div class="bookInfo">
 		<label>title:
 			<input [(ngModel)]="book.title" placeholder="title"/>
 		</label>
 		<label>author:
-			<input [(ngModel)]="book.authorName" placeholder="authorName"/>
+			<span>{{book.authorName}}</span>
+		</label>
+		<label>genre:
+			<input [(ngModel)]="book.genre" placeholder="genre"/>
+		</label>
+		<label>notes:
+			<input [(ngModel)]="book.notes" placeholder="notes"/>
+		</label>
+		<label>rating:
+			<input [(ngModel)]="book.rating" placeholder="rating"/>
+		</label>
+		<label>read date:
+			<input [(ngModel)]="book.readDate" placeholder="readDate"/>
 		</label>
 	</div>
 	<button (click)="goBack()">go back</button>

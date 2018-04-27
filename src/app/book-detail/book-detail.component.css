@@ -1,0 +1,29 @@
+.bookInfo {
+  width: 30em;
+}
+.bookInfo label {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
+}
+button {
+  color: #888;
+  margin-bottom: 12px;
+}

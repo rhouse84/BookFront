@@ -61,35 +61,36 @@ export class BookService {
 		);
 	}
  
-  // //////// Save methods //////////
+	//////// Save methods //////////
  
-  // /** POST: add a new hero to the server */
-  // addHero (hero: Hero): Observable<Hero> {
-  //   return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-  //     tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
-  //     catchError(this.handleError<Hero>('addHero'))
-  //   );
-  // }
- 
-  // /** DELETE: delete the hero from the server */
-  // deleteHero (hero: Hero | number): Observable<Hero> {
-  //   const id = typeof hero === 'number' ? hero : hero.id;
-  //   const url = `${this.heroesUrl}/${id}`;
- 
-  //   return this.http.delete<Hero>(url, httpOptions).pipe(
-  //     tap(_ => this.log(`deleted hero id=${id}`)),
-  //     catchError(this.handleError<Hero>('deleteHero'))
-  //   );
-  // }
- 
-  // /** PUT: update the hero on the server */
-  // updateHero (hero: Hero): Observable<any> {
-  //   return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-  //     tap(_ => this.log(`updated hero id=${hero.id}`)),
-  //     catchError(this.handleError<any>('updateHero'))
-  //   );
-  // }
- 
+	/** POST: add a new book to the server */
+	addBook (book: Book): Observable<Book> {
+		return this.http.post<Book>(environment.host+environment.booksUrl, book, httpOptions).pipe(
+			tap((book: Book) => this.log(`added book w/ id=${book._id}`)),
+			catchError(this.handleError<Book>('addBook'))
+		);
+	}
+	
+	/** DELETE: delete the book from the server */
+	deleteBook (book: Book | string): Observable<Book> {
+		const id = typeof book === 'string' ? book : book._id;
+		const url = `${environment.host+environment.booksUrl}/${id}`;
+	
+		return this.http.delete<Book>(url, httpOptions).pipe(
+			tap(_ => this.log(`deleted book id=${id}`)),
+			catchError(this.handleError<Book>('deleteBook'))
+		);
+	}
+	
+	/** PUT: update the book on the server */
+	updateBook (book: Book): Observable<any> {
+		const id = typeof book === 'string' ? book : book._id;
+		const url = `${environment.host+environment.booksUrl}/${id}`;
+		return this.http.put(url, book, httpOptions).pipe(
+			tap(_ => this.log(`updated book id=${book._id}`)),
+			catchError(this.handleError<any>('updateBook'))
+		);
+	}
 
 	private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {

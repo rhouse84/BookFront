@@ -35,8 +35,8 @@ export class BookDetailComponent implements OnInit {
 	}
 
 	save(): void {
-		//this.bookService.updateBook(this.book)
-		//.subscribe(() => this.goBack());
+		this.bookService.updateBook(this.book)
+		.subscribe(() => this.goBack());
 	}
 
 }
