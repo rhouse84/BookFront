@@ -4,10 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-	dev: true,
-	production: false,
-	host: 'http://localhost:3000',
-	booksUrl: '/api/books',
-	bookSearchUrl: '/api/bookSearch'
+    dev: true,
+    production: false,
+    host: 'http://localhost:3000',
+    booksUrl: '/api/books',
+    bookSearchUrl: '/api/bookSearch'
 };
 

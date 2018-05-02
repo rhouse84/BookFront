@@ -18,27 +18,27 @@ import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material';
 
 @NgModule({
-	imports: [
-		BrowserModule,
-		FormsModule,
-		AppRoutingModule,
-		HttpClientModule,
-		BrowserAnimationsModule,
-		MaterialModule,
-		MatNativeDateModule
-	],
-	declarations: [
-		AppComponent,
-		BooksComponent,
-		BookDetailComponent,
-		BookSearchComponent,
-		MessagesComponent,
-		DashboardComponent
-	],
-	providers: [
-		BookService,
-		MessageService
-	],
-	bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MaterialModule,
+        MatNativeDateModule
+    ],
+    declarations: [
+        AppComponent,
+        BooksComponent,
+        BookDetailComponent,
+        BookSearchComponent,
+        MessagesComponent,
+        DashboardComponent
+    ],
+    providers: [
+        BookService,
+        MessageService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

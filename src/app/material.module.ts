@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
-  imports: [MatButtonModule, MatDatepickerModule, MatInputModule, MatRadioModule, MatToolbarModule],
-  exports: [MatButtonModule, MatDatepickerModule, MatInputModule, MatRadioModule, MatToolbarModule],
+    imports: [MatButtonModule, MatDatepickerModule, MatInputModule, MatRadioModule, MatToolbarModule],
+    exports: [MatButtonModule, MatDatepickerModule, MatInputModule, MatRadioModule, MatToolbarModule],
 })
 export class MaterialModule { }

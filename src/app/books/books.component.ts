@@ -3,24 +3,24 @@ import { Book } from '../book';
 import { BookService } from '../book.service';
 
 @Component({
-	selector: 'app-books',
-	templateUrl: './books.component.html',
-	styleUrls: ['./books.component.css']
+    selector: 'app-books',
+    templateUrl: './books.component.html',
+    styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
 
-	books: Book[];
+    books: Book[];
 
-	constructor(private bookService: BookService) { }
+    constructor(private bookService: BookService) { }
 
-	ngOnInit() {
-		this.getBooks();
-	}
+    ngOnInit() {
+        this.getBooks();
+    }
 
-	getBooks(): void {
-		this.bookService.getBooks()
-		.subscribe(books => this.books = books);
-	}
+    getBooks(): void {
+        this.bookService.getBooks()
+        .subscribe(books => this.books = books);
+    }
 
   // add(name: string): void {
   //   name = name.trim();
@@ -30,7 +30,7 @@ export class BooksComponent implements OnInit {
   //       this.heroes.push(hero);
   //     });
   // }
- 
+
   // delete(hero: Hero): void {
   //   this.heroes = this.heroes.filter(h => h !== hero);
   //   this.heroService.deleteHero(hero).subscribe();
