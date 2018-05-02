@@ -1,26 +1,31 @@
 <div *ngIf="book">
 
-	<h2>Book Details</h2>
+	<h2 class='mat-title'>Book Details</h2>
 	<div class="bookInfo">
-		<label>title:
-			<input [(ngModel)]="book.title" placeholder="title"/>
-		</label>
+		<mat-form-field class="full-width">
+			<input matInput [(ngModel)]="book.title" placeholder="Title">
+		</mat-form-field>
 		<label>author:
 			<span>{{book.authorName}}</span>
 		</label>
-		<label>genre:
-			<input [(ngModel)]="book.genre" placeholder="genre"/>
-		</label>
-		<label>notes:
-			<input [(ngModel)]="book.notes" placeholder="notes"/>
-		</label>
-		<label>rating:
-			<input [(ngModel)]="book.rating" placeholder="rating"/>
-		</label>
-		<label>read date:
-			<input [(ngModel)]="book.readDate" placeholder="readDate"/>
-		</label>
+		<mat-form-field class="full-width">
+			<input matInput [(ngModel)]="book.genre" placeholder="Genre">
+		</mat-form-field>
+		<mat-form-field class="full-width">
+			<textarea matInput [(ngModel)]="book.notes" placeholder="Notes"></textarea>
+		</mat-form-field>
+		<mat-radio-group [(ngModel)]="book.rating" placeholder="rating" class="full-width">
+			<mat-radio-button value="4">Great</mat-radio-button>
+			<mat-radio-button value="3">Gook</mat-radio-button>
+			<mat-radio-button value="2">OK</mat-radio-button>
+			<mat-radio-button value="1">Bad</mat-radio-button>
+		</mat-radio-group>
+		<mat-form-field>
+			<input matInput [matDatepicker]="myDatepicker" [(ngModel)]="book.readDate" placeholder="Read Date">
+			<mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+			<mat-datepicker #myDatepicker></mat-datepicker>
+		</mat-form-field>
 	</div>
-	<button (click)="goBack()">go back</button>
-	<button (click)="save()">save</button>
+	<button mat-button (click)="goBack()">go back</button>
+	<button mat-button (click)="save()">save</button>
 </div>

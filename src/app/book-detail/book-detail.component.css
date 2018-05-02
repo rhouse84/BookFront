@@ -1,29 +1,13 @@
 .bookInfo {
-  width: 30em;
+  display: flex;
+  flex-direction: column;
 }
-.bookInfo label {
-  display: block;
+.bookInfo > mat-form-field {
   width: 100%;
+}
+.full-width { 
   margin-bottom: 1em;
 }
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
-}
-button {
-  color: #888;
-  margin-bottom: 12px;
+.mat-radio-button {
+  padding-right: 16px;
 }

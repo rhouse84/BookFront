@@ -13,13 +13,19 @@ import { BookSearchComponent } from './book-search/book-search.component';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { MatNativeDateModule } from '@angular/material';
 
 @NgModule({
 	imports: [
 		BrowserModule,
 		FormsModule,
 		AppRoutingModule,
-		HttpClientModule
+		HttpClientModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+		MatNativeDateModule
 	],
 	declarations: [
 		AppComponent,

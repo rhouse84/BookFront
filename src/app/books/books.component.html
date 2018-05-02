@@ -1,8 +1,8 @@
-<h2>My Books</h2>
+<h2 class='mat-title'>My Books</h2>
 <ul class="books">
 	<li *ngFor="let book of books">
 		<a routerLink="/detail/{{book._id}}">
-			<span class="badge">{{book.oldId}}</span> {{book.title}}
+			<span class="badge mat-caption">{{book.oldId}}</span><span class='mat-caption'>{{book.title}}</span>
 		</a>
 	</li>
 </ul>
