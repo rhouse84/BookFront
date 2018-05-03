@@ -6,9 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BookDetailComponent } from './book-detail/book-detail.component';
+import { BookDetailComponent, AuthorDialogComponent } from './book-detail/book-detail.component';
 import { BooksComponent } from './books/books.component';
 import { BookService } from './book.service';
+import { AuthorService } from './author.service';
 import { BookSearchComponent } from './book-search/book-search.component';
 import { MessageService } from './message.service';
 import { MessagesComponent } from './messages/messages.component';
@@ -16,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { MatNativeDateModule } from '@angular/material';
+import { AuthorSearchComponent } from './author-search/author-search.component';
 
 @NgModule({
     imports: [
@@ -33,10 +35,14 @@ import { MatNativeDateModule } from '@angular/material';
         BookDetailComponent,
         BookSearchComponent,
         MessagesComponent,
-        DashboardComponent
+        DashboardComponent,
+        AuthorDialogComponent,
+        AuthorSearchComponent
     ],
+    entryComponents: [AuthorDialogComponent],
     providers: [
         BookService,
+        AuthorService,
         MessageService
     ],
     bootstrap: [AppComponent]

@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
 
     getBooks(): void {
         this.bookService.getBooks()
-        .subscribe(books => this.books = books);
+        .subscribe(books => this.books = books.slice(0, 10));
     }
 
   // add(name: string): void {
