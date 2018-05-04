@@ -39,7 +39,10 @@ import { AuthorSearchComponent } from './author-search/author-search.component';
         AuthorDialogComponent,
         AuthorSearchComponent
     ],
-    entryComponents: [AuthorDialogComponent],
+    entryComponents: [
+        AuthorDialogComponent,
+        AuthorSearchComponent
+    ],
     providers: [
         BookService,
         AuthorService,

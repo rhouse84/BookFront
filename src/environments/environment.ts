@@ -8,6 +8,8 @@ export const environment = {
     production: false,
     host: 'http://localhost:3000',
     booksUrl: '/api/books',
-    bookSearchUrl: '/api/bookSearch'
+    bookSearchUrl: '/api/bookSearch',
+    authorsUrl: '/api/authors',
+    authorSearchUrl: '/api/authorSearch'
 };
 

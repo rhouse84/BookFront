@@ -9,18 +9,18 @@
             <span class="mat-select-value-text">{{book.authorName}}</span> <button mat-raised-button (click)="openAuthorDialog()">Select Author</button>
         </label>
         <mat-form-field>
-            <mat-select [(ngModel)]="book.genre"placeholder="Genre" >
+            <mat-select [(ngModel)]="book.genre" placeholder="Genre" >
                 <mat-option *ngFor="let genre of genres"
-                    value={{genre.genre}}>{{genre.desc}}
+                    [value]="genre.genre">{{genre.desc}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field class="full-width">
             <textarea matInput [(ngModel)]="book.notes" placeholder="Notes"></textarea>
         </mat-form-field>
-        <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating" class="full-width">
+        <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating">
             <mat-radio-button *ngFor="let rating of ratings"
-                value={{rating.rating}}>{{rating.desc}}
+                [value]="rating.rating">{{rating.desc}}
             </mat-radio-button>
         </mat-radio-group>
         <mat-form-field>

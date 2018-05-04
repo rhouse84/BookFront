@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Book } from './book';
 import { MessageService } from './message.service';
@@ -106,7 +105,7 @@ export class BookService {
         };
     }
 
-    /** Log a HeroService message with the MessageService */
+    /** Log a BookService message with the MessageService */
     private log(message: string) {
         this.messageService.add('BookService: ' + message);
     }

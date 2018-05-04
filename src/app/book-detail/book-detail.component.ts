@@ -7,6 +7,7 @@ import { BookService } from '../book.service';
 import { GENRES } from '../genres';
 import { RATINGS } from '../ratings';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AuthorSearchComponent } from '../author-search/author-search.component';
 
 @Component({
     selector: 'app-book-detail',
