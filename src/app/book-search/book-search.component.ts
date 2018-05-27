@@ -9,7 +9,7 @@ import { BookService } from '../book.service';
 @Component({
     selector: 'app-book-search',
     templateUrl: './book-search.component.html',
-    styleUrls: ['./book-search.component.css']
+    styleUrls: ['./book-search.component.scss']
 })
 
 export class BookSearchComponent implements OnInit {

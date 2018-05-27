@@ -1,14 +1,16 @@
-<div id="search-component">
+<div id="app-author-search">
 	<h4 class='mat-subheading-1'>Author Search</h4>
 
 	<input #searchBox id="search-box" class="mat-input" (keyup)="search(searchBox.value)" />
 
 	<ul class="search-result">
 		<li *ngFor="let author of authors$ | async" >
-            <!-- <a routerLink="/authordetail/{{author._id}}" class="mat-caption"> -->
-            <a class='mat-caption'>
-				{{author.name}}
-			</a>
-		</li>
+            <button mat-button [mat-dialog-close]='author'>
+                {{author.name}}
+            </button>
+        </li>
+        <li *ngIf="(authors$ | async)?.length===0">
+            <button mat-raised-button color="primary" [mat-dialog-close]='searchBox.value'>Add</button>
+        </li>
 	</ul>
 </div>

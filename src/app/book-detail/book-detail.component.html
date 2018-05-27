@@ -1,34 +1,48 @@
 
-<div *ngIf="book">
+<div *ngIf="book;">
     <h2 class='mat-title'>Book Details</h2>
     <div class="bookInfo">
         <mat-form-field class="full-width">
             <input matInput [(ngModel)]="book.title" placeholder="Title">
         </mat-form-field>
-        <label>author:
-            <span class="mat-select-value-text">{{book.authorName}}</span> <button mat-raised-button (click)="openAuthorDialog()">Select Author</button>
-        </label>
-        <mat-form-field>
-            <mat-select [(ngModel)]="book.genre" placeholder="Genre" >
-                <mat-option *ngFor="let genre of genres"
-                    [value]="genre.genre">{{genre.desc}}
-                </mat-option>
-            </mat-select>
+        <mat-grid-list cols="2" rowHeight="4:1">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput [disabled]="true" [(ngModel)]="book.authorName" placeholder="Author">
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="openAuthorDialog()">Select Author</button>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-select [(ngModel)]="book.genre" placeholder="Genre" >
+                        <mat-option *ngFor="let genre of genres"
+                            [value]="genre.genre">{{genre.desc}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating">
+                    <mat-radio-button *ngFor="let rating of ratings"
+                        [value]="rating.rating">{{rating.desc}}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="book.readDate" placeholder="Read Date">
+                    <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="book.notes" placeholder="Notes">
         </mat-form-field>
         <mat-form-field class="full-width">
-            <textarea matInput [(ngModel)]="book.notes" placeholder="Notes"></textarea>
-        </mat-form-field>
-        <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating">
-            <mat-radio-button *ngFor="let rating of ratings"
-                [value]="rating.rating">{{rating.desc}}
-            </mat-radio-button>
-        </mat-radio-group>
-        <mat-form-field>
-            <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="book.readDate" placeholder="Read Date">
-            <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
-            <mat-datepicker #myDatepicker></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <button mat-button (click)="goBack()">Go Back</button>
-    <button mat-button (click)="save()">Save</button>
+                <input matInput type=url [(ngModel)]="book.goodReadsUrl" placeholder="GoodReads">
+            </mat-form-field>
+        </div>
+    <button mat-raised-button color="accent" (click)="goBack()">Go Back</button>
+    <button mat-raised-button color="accent" (click)="save()">Save</button>
 </div>

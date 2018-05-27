@@ -12,4 +12,5 @@ export class Book {
     topicId: string;
     topicDesc: string;
     userId: number;
+    goodReadsUrl: string;
 }

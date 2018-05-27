@@ -6,8 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 
 import { AppComponent } from './app.component';
-import { BookDetailComponent, AuthorDialogComponent } from './book-detail/book-detail.component';
+import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BooksComponent } from './books/books.component';
+import { BookAddComponent } from './book-add/book-add.component';
 import { BookService } from './book.service';
 import { AuthorService } from './author.service';
 import { BookSearchComponent } from './book-search/book-search.component';
@@ -34,13 +35,12 @@ import { AuthorSearchComponent } from './author-search/author-search.component';
         BooksComponent,
         BookDetailComponent,
         BookSearchComponent,
+        BookAddComponent,
         MessagesComponent,
         DashboardComponent,
-        AuthorDialogComponent,
         AuthorSearchComponent
     ],
     entryComponents: [
-        AuthorDialogComponent,
         AuthorSearchComponent
     ],
     providers: [

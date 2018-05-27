@@ -5,9 +5,11 @@
 .bookInfo > mat-form-field {
   width: 100%;
 }
-.full-width { 
+.mat-radio-button,
+.mat-raised-button {
+  margin-right: 1em;
   margin-bottom: 1em;
 }
-.mat-radio-button {
-  padding-right: 16px;
+.mat-raised-button {
+    width: 9em;
 }

@@ -5,6 +5,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatRadioModule,
         MatToolbarModule,
         MatSelectModule,
-        MatDialogModule
+        MatDialogModule,
+        MatGridListModule
     ],
     exports: [
         MatButtonModule,
@@ -23,7 +25,8 @@ import { MatSelectModule } from '@angular/material/select';
         MatRadioModule,
         MatToolbarModule,
         MatSelectModule,
-        MatDialogModule
+        MatDialogModule,
+        MatGridListModule
     ],
 })
 export class MaterialModule { }

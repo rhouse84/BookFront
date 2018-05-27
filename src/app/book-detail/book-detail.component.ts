@@ -6,24 +6,27 @@ import { Book } from '../book';
 import { BookService } from '../book.service';
 import { GENRES } from '../genres';
 import { RATINGS } from '../ratings';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatGridList } from '@angular/material';
 import { AuthorSearchComponent } from '../author-search/author-search.component';
+import { Author } from '../author';
+import { AuthorService } from '../author.service';
 
 @Component({
     selector: 'app-book-detail',
     templateUrl: './book-detail.component.html',
-    styleUrls: ['./book-detail.component.css']
+    styleUrls: ['./book-detail.component.scss']
 })
 
 export class BookDetailComponent implements OnInit {
     @Input() book: Book;
     genres = GENRES;
     ratings = RATINGS;
-    authorName: string;
+    author: Author;
 
     constructor (
         private route: ActivatedRoute,
         private bookService: BookService,
+        private authorService: AuthorService,
         private location: Location,
         public dialog: MatDialog
     ) {}
@@ -47,33 +50,39 @@ export class BookDetailComponent implements OnInit {
         .subscribe(() => this.goBack());
     }
 
-    openAuthorDialog(): void {
-        const dialogRef = this.dialog.open(AuthorDialogComponent, {
-            width: '250px',
-            data: { authorName: this.authorName }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed ', result);
-            this.authorName = result;
+    addAuthor(name): void {
+        const newAuthor = new Author;
+        newAuthor.name = name;
+        newAuthor.namelc = name.toLowerCase();
+        newAuthor.userId = 1;
+        this.authorService.addAuthor(newAuthor)
+        .subscribe(author => {
+            this.author = author;
+            this.updateBookAuthor();
         });
     }
 
-}
+    updateBookAuthor(): void {
+        this.book.authorId = this.author._id;
+        this.book.authorName = this.author.name;
+    }
 
-@Component({
-    // tslint:disable-next-line:component-selector
-    selector: 'author-dialog-component',
-    templateUrl: './author-dialog-component.html'
-})
-export class AuthorDialogComponent {
+    openAuthorDialog(): void {
+        const dialogRef = this.dialog.open(AuthorSearchComponent, {
+            width: '250px',
+            data: { author: this.author }
+        });
 
-    constructor(
-        public dialogRef: MatDialogRef<AuthorDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-    onNoClick(): void {
-        this.dialogRef.close();
+        dialogRef.afterClosed().subscribe(result => {
+            if (result instanceof Object) {
+                this.author = result;
+                this.updateBookAuthor();
+            } else if (typeof result === 'undefined') {
+                // console.log('returning nothing');
+            } else {
+                this.addAuthor(result);
+            }
+        });
     }
 
 }
