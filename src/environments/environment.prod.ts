@@ -5,5 +5,6 @@ export const environment = {
     booksUrl: '/api/books',
     bookSearchUrl: '/api/bookSearch',
     authorsUrl: '/api/authors',
-    authorSearchUrl: '/api/authorSearch'
+    authorSearchUrl: '/api/authorSearch',
+    googleProvider: ''
 };

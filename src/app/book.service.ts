@@ -5,17 +5,14 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Book } from './book';
 import { MessageService } from './message.service';
 import { environment } from '../environments/environment';
-
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+import { LoginService } from './login.service';
 
 @Injectable()
 export class BookService {
-
     constructor(
         private http: HttpClient,
-        private messageService: MessageService) {}
+        private messageService: MessageService,
+        private loginService: LoginService) {}
 
     getBooks(): Observable<Book[]> {
         return this.http.get<Book[]>(environment.host + environment.booksUrl)
@@ -64,6 +61,9 @@ export class BookService {
 
     /** POST: add a new book to the server */
     addBook (book: Book): Observable<Book> {
+        const httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this.loginService.user.idToken })
+        };
         return this.http.post<Book>(environment.host + environment.booksUrl, book, httpOptions).pipe(
             // tslint:disable-next-line:no-shadowed-variable
             tap((book: Book) => this.log(`added book w/ id=${book._id}`)),
@@ -75,6 +75,9 @@ export class BookService {
     deleteBook (book: Book | string): Observable<Book> {
         const id = typeof book === 'string' ? book : book._id;
         const url = `${environment.host + environment.booksUrl}/${id}`;
+        const httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this.loginService.user.idToken })
+        };
 
         return this.http.delete<Book>(url, httpOptions).pipe(
             tap(_ => this.log(`deleted book id=${id}`)),
@@ -86,6 +89,10 @@ export class BookService {
     updateBook (book: Book): Observable<any> {
         const id = typeof book === 'string' ? book : book._id;
         const url = `${environment.host + environment.booksUrl}/${id}`;
+        const httpOptions = {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': this.loginService.user.idToken })
+        };
+
         return this.http.put(url, book, httpOptions).pipe(
             tap(_ => this.log(`updated book id=${book._id}`)),
             catchError(this.handleError<any>('updateBook'))

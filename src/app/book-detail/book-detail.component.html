@@ -2,17 +2,16 @@
 <div *ngIf="book;">
     <h2 class='mat-title'>Book Details</h2>
     <div class="bookInfo">
-        <mat-form-field class="full-width">
+        <mat-form-field>
             <input matInput [(ngModel)]="book.title" placeholder="Title">
         </mat-form-field>
-        <mat-grid-list cols="2" rowHeight="4:1">
-            <mat-grid-tile>
+        <div class='myGrid2'>
+            <div class='myTile'>
                 <mat-form-field>
-                    <input matInput [disabled]="true" [(ngModel)]="book.authorName" placeholder="Author">
+                    <input matInput [(ngModel)]="book.authorName" (click)="openAuthorDialog()" placeholder="Author">
                 </mat-form-field>
-                <button mat-raised-button color="primary" (click)="openAuthorDialog()">Select Author</button>
-            </mat-grid-tile>
-            <mat-grid-tile>
+            </div>
+            <div class='myTile'>
                 <mat-form-field>
                     <mat-select [(ngModel)]="book.genre" placeholder="Genre" >
                         <mat-option *ngFor="let genre of genres"
@@ -20,29 +19,41 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating">
-                    <mat-radio-button *ngFor="let rating of ratings"
-                        [value]="rating.rating">{{rating.desc}}
-                    </mat-radio-button>
-                </mat-radio-group>
-            </mat-grid-tile>
-            <mat-grid-tile>
+            </div>
+            <div class='myTile'>
+                <mat-list>
+                    <span mat-subheader>Rating</span>
+                    <mat-radio-group [(ngModel)]="book.rating" placeholder="Rating">
+                        <mat-radio-button *ngFor="let rating of ratings"
+                            [value]="rating.rating">{{rating.desc}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                </mat-list>
+            </div>
+            <div class='myTile'>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="myDatepicker" [(ngModel)]="book.readDate" placeholder="Read Date">
+                    <input matInput class="readDate" [matDatepicker]="myDatepicker" [(ngModel)]="book.readDate" placeholder="Read Date">
                     <mat-datepicker-toggle [for]="myDatepicker"></mat-datepicker-toggle>
                     <mat-datepicker #myDatepicker></mat-datepicker>
                 </mat-form-field>
-            </mat-grid-tile>
-        </mat-grid-list>
-        <mat-form-field class="full-width">
+            </div>
+        </div>
+        <mat-form-field>
             <input matInput [(ngModel)]="book.notes" placeholder="Notes">
         </mat-form-field>
-        <mat-form-field class="full-width">
-                <input matInput type=url [(ngModel)]="book.goodReadsUrl" placeholder="GoodReads">
-            </mat-form-field>
+        <div class='myGrid2'>
+            <div class='myTile'>
+                <mat-form-field class="goodReads">
+                    <input matInput type=url [(ngModel)]="book.goodReadsUrl" placeholder="GoodReads">
+                </mat-form-field>
+            </div>
+            <div class='myTile'>
+                <div *ngIf="book.goodReadsUrl;">
+                    <button mat-raised-button color="primary" (click)="openGoodReads()">Go There</button>
+                </div>
+            </div>    
         </div>
+    </div>
     <button mat-raised-button color="accent" (click)="goBack()">Go Back</button>
     <button mat-raised-button color="accent" (click)="save()">Save</button>
 </div>

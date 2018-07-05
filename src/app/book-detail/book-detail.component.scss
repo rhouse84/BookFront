@@ -1,15 +1,52 @@
+@import '../../breakpoints';
+
+.myGrid2 {
+    width: 100%;
+    .myTile {
+        width: 50%;
+        display: inline-block;
+        @media #{$information-phone} {
+            width: 100%;
+        }
+        
+    }
+}
 .bookInfo {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 .bookInfo > mat-form-field {
-  width: 100%;
+    width: 100%;
 }
 .mat-radio-button,
 .mat-raised-button {
-  margin-right: 1em;
-  margin-bottom: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
 }
 .mat-raised-button {
     width: 9em;
+}
+.mat-grid-tile ::ng-deep.mat-figure {
+    justify-content: left;
+}
+.mat-list .mat-subheader {
+    font-size: .75em;
+    padding: 0;
+    height: 30px;
+}
+.mat-form-field .readDate {
+    width: 50%;
+}
+.mat-datepicker-toggle ::ng-deep.mat-icon-button {
+    height: 24px;
+    line-height: 24px;
+}
+.mat-form-field.goodReads ::ng-deep.mat-form-field-infix {
+    width: 388px;
+}
+@media #{$information-phone} {
+}
+@media #{$information-tablet} {
+}
+@media #{$information-desktop} {
 }

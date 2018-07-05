@@ -10,6 +10,7 @@ export const environment = {
     booksUrl: '/api/books',
     bookSearchUrl: '/api/bookSearch',
     authorsUrl: '/api/authors',
-    authorSearchUrl: '/api/authorSearch'
+    authorSearchUrl: '/api/authorSearch',
+    googleProvider: '376371685785-s8tr3td1vpcqusgr900bm2g6pebnp3oi.apps.googleusercontent.com'
 };
 

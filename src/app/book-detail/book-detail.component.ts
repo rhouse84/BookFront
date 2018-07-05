@@ -6,7 +6,7 @@ import { Book } from '../book';
 import { BookService } from '../book.service';
 import { GENRES } from '../genres';
 import { RATINGS } from '../ratings';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatGridList } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatGridList, MatList } from '@angular/material';
 import { AuthorSearchComponent } from '../author-search/author-search.component';
 import { Author } from '../author';
 import { AuthorService } from '../author.service';
@@ -48,6 +48,10 @@ export class BookDetailComponent implements OnInit {
     save(): void {
         this.bookService.updateBook(this.book)
         .subscribe(() => this.goBack());
+    }
+
+    openGoodReads(): void {
+        window.open(this.book.goodReadsUrl, '_blank');
     }
 
     addAuthor(name): void {
